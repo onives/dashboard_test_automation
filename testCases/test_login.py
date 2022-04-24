@@ -2,12 +2,13 @@ import time
 import pytest
 from selenium import webdriver
 from pageObjects.login_page import LoginPage
+from utilities.read_properties import ReadConfig
 
 
 class Test00Login:
-    base_url = "https://nives-dashboard.herokuapp.com/"
-    email = "testing@admin.com"
-    password = "@admin12345"
+    base_url = ReadConfig.get_application_url()
+    email = ReadConfig.get_email()
+    password = ReadConfig.get_password()
 
     def test_homepage_title(self, setup):
         self.driver = setup
