@@ -6,7 +6,7 @@ from utilities.read_properties import ReadConfig
 from utilities.custom_logger import LogGen
 
 
-class Test00Login:
+class Test001Login:
     base_url = ReadConfig.get_application_url()
     email = ReadConfig.get_email()
     password = ReadConfig.get_password()
@@ -14,9 +14,10 @@ class Test00Login:
 
     def test_homepage_title(self, setup):
 
-        self.logger.info("********** Test00Login **********")
+        self.logger.info("********** Test001Login **********")
         self.logger.info("********** Verifying Home Page Title **********")
         self.driver = setup
+        self.driver.implicitly_wait(5)
         self.driver.get(self.base_url)
         actual_title = self.driver.title
         if actual_title == "Nives-Admin-Dashboard":
@@ -32,6 +33,7 @@ class Test00Login:
     def test_login(self, setup):
         self.logger.info("********** Verifying Login Test **********")
         self.driver = setup
+        self.driver.implicitly_wait(5)
         self.driver.get(self.base_url)
         self.lp = LoginPage(self.driver)
         self.lp.set_email(self.email)
